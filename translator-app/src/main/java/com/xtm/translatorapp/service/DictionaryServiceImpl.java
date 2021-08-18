@@ -37,7 +37,7 @@ public class DictionaryServiceImpl implements DictionaryService {
                translatedSentence+= dictionaryDB.get(word);
            }
            else if(dictionaryDB.containsValue(word)){
-               String mapKey = getKeyByValue(dictionaryDB,word);
+               String mapKey = DictionaryUtil.getKeyByValue(dictionaryDB,word);
                if(mapKey==null){
                    //TODO handle these exception
                    return "This word can not be translated";
@@ -49,7 +49,6 @@ public class DictionaryServiceImpl implements DictionaryService {
            else {
                return "This word can not be translated: "+ word;
            }
-
        }
        if(mode.equals(SentenceMode.IN_WORDS)) {
            return translatedSentence;
@@ -58,12 +57,10 @@ public class DictionaryServiceImpl implements DictionaryService {
        }
     }
 
-    public static <T, E> T getKeyByValue(Map<T, E> map, E value) {
-        for (Map.Entry<T, E> entry : map.entrySet()) {
-            if (Objects.equals(value, entry.getValue())) {
-                return entry.getKey();
-            }
-        }
-        return null;
+    @Override
+    public Map<String, Integer> getSortedWordsUsage() {
+
+        return DictionaryUtil.getWordFrequency(dictionaryDB);
     }
+
 }
