@@ -11,7 +11,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DictionaryServiceImplTest {
 
-
     DictionaryServiceImpl dictionaryService = new DictionaryServiceImpl();
 
     @Test
