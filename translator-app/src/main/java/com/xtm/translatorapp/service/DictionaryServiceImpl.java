@@ -44,7 +44,6 @@ public class DictionaryServiceImpl implements DictionaryService {
                }else {
                    translatedSentence+= mapKey;
                }
-
            }
            else {
                return "This word can not be translated: "+ word;
